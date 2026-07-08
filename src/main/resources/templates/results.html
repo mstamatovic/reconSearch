@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Whois Rezultati</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .results { margin-top: 20px; background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 500px; overflow-y: auto;}
+        .info { color: #555; margin-bottom: 10px; }
+        .back-link { display: inline-block; margin-top: 20px; padding: 8px 15px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; }
+        .back-link:hover { background: #0056b3; }
+        .no-results { color: #888; font-style: italic; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Whois Rezultati</h2>
+
+    <!-- Prikaz rezultata ako postoje -->
+    <div th:if="${results != null}">
+        <p class="info">
+            Pronađeno <strong th:text="${resultCount}"></strong> linija za domen
+            <strong th:text="${domain}"></strong>
+            <span th:if="${keyword != null and !keyword.isEmpty()}">
+                koje sadrže "<strong th:text="${keyword}"></strong>"
+            </span>.
+        </p>
+
+        <div class="results" th:if="${resultCount > 0}">
+            <div th:each="line : ${results}" th:text="${line}"></div>
+        </div>
+
+        <div th:if="${resultCount == 0}" class="no-results">
+            Nema rezultata za zadati kriterijum.
+        </div>
+
+        <a href="/" class="back-link">← Nova pretraga</a>
+    </div>
+
+    <!-- Ako nema rezultata (direktan pristup /results bez prethodne pretrage) -->
+    <div th:if="${results == null}">
+        <p class="no-results">Nema dostupnih rezultata. Molimo vas da prvo izvršite pretragu.</p>
+        <a href="/" class="back-link">← Idi na formu</a>
+    </div>
+</div>
+
+</body>
+</html>
