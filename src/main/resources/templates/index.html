@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Whois Pretraga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f9;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            background: #ffe6e6;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <h2>Whois Upit i Pretraga</h2>
+
+    <!-- Prikaz greške (ako je došlo do greške pri prethodnoj pretrazi) -->
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+
+    <form action="/search" method="POST">
+        <label for="domain">Domen:</label><br>
+        <input type="text" id="domain" name="domain" placeholder="npr. google.com" required><br><br>
+
+        <label for="keyword">Pretraži po reči (opciono):</label><br>
+        <input type="text" id="keyword" name="keyword" placeholder="npr. Registrar"><br><br>
+
+        <button type="submit">Pokreni Whois i Pretraži</button>
+    </form>
+</div>
+
 </body>
 </html>
