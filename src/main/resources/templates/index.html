@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Whois Pretraga</title>
+    <title>Reconnaissance</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,19 +53,19 @@
 <body>
 
 <div class="container">
-    <h2>Whois Upit i Pretraga</h2>
+    <h2>Internet domains reconnaissance</h2>
 
     <!-- Prikaz greške (ako je došlo do greške pri prethodnoj pretrazi) -->
     <div th:if="${error}" class="error" th:text="${error}"></div>
 
     <form action="/search" method="POST">
-        <label for="domain">Domen:</label><br>
-        <input type="text" id="domain" name="domain" placeholder="npr. google.com" required><br><br>
+        <label for="domain">Target domain:</label><br><br>
+        <input type="text" id="domain" name="domain" placeholder="ex. google.com" required><br><br><br>
 
-        <label for="keyword">Pretraži po reči (opciono):</label><br>
-        <input type="text" id="keyword" name="keyword" placeholder="npr. Registrar"><br><br>
+        <label for="keyword">Search by keyword (if no keyword whole output be printed):</label><br><br>
+        <input type="text" id="keyword" name="keyword" placeholder="ex. registrar"><br><br>
 
-        <button type="submit">Pokreni Whois i Pretraži</button>
+        <button type="submit">Search</button>
     </form>
 </div>
 

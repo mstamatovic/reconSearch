@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Whois Rezultati</title>
+    <title>Reconnaissance</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; }
         .container { background: white; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
@@ -16,15 +16,15 @@
 <body>
 
 <div class="container">
-    <h2>Whois Rezultati</h2>
+    <h2>Reconnaissance results</h2>
 
     <!-- Prikaz rezultata ako postoje -->
     <div th:if="${results != null}">
         <p class="info">
-            Pronađeno <strong th:text="${resultCount}"></strong> linija za domen
+            There is <strong th:text="${resultCount}"></strong> lines for targeted domain
             <strong th:text="${domain}"></strong>
             <span th:if="${keyword != null and !keyword.isEmpty()}">
-                koje sadrže "<strong th:text="${keyword}"></strong>"
+                which contains "<strong th:text="${keyword}"></strong>"
             </span>.
         </p>
 
@@ -33,16 +33,16 @@
         </div>
 
         <div th:if="${resultCount == 0}" class="no-results">
-            Nema rezultata za zadati kriterijum.
+            There is no results for that search criteria.
         </div>
 
-        <a href="/" class="back-link">← Nova pretraga</a>
+        <a href="/" class="back-link">← New search</a>
     </div>
 
     <!-- Ako nema rezultata (direktan pristup /results bez prethodne pretrage) -->
     <div th:if="${results == null}">
-        <p class="no-results">Nema dostupnih rezultata. Molimo vas da prvo izvršite pretragu.</p>
-        <a href="/" class="back-link">← Idi na formu</a>
+        <p class="no-results">No available results. Please, do search again.</p>
+        <a href="/" class="back-link">← Go back to search form</a>
     </div>
 </div>
 
