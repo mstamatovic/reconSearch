@@ -1,7 +1,8 @@
 ```
 Project description:
 
-SSmall web application made to demonstrate how we can do network reconnaissance (OSINT) Please, note that this application is just for learning purpose!
+Small web application made to demonstrate how we can do network reconnaissance (OSINT).
+Please, NOTE THAT THIS APPLICATION IS JUST FOR EDUCATION PURPOSE!!!
 ```
 ```
 Technologies:
